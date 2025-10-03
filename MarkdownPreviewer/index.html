@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Premium Markdown Previewer</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="libs/highlight.min.css">
+  <script src="libs/marked.min.js"></script>
+  <script src="libs/highlight.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Markdown Previewer</h1>
+    <button id="themeToggle">Toggle Theme</button>
+  </header>
+
+  <div class="toolbar">
+    <button onclick="exportMarkdown()">Export .md</button>
+    <button onclick="exportHTML()">Export HTML</button>
+    <div class="stats">
+      <span id="wordCount">Words: 0</span>
+      <span id="charCount">Chars: 0</span>
+      <span id="readTime">Read: 0 min</span>
+    </div>
+  </div>
+
+  <main>
+    <textarea id="editor" placeholder="Start typing Markdown..."></textarea>
+    <div id="preview"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
