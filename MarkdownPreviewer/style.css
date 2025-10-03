@@ -1,0 +1,192 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #1f1f2f, #2b2b44);
+  color: #f0f0f0;
+  overflow: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(40,40,60,0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+header h1 {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+#themeToggle {
+  padding: 6px 15px;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+}
+
+#themeToggle:hover {
+  background: rgba(108,92,231,0.6);
+  box-shadow: 0 4px 10px rgba(108,92,231,0.6);
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: rgba(40,40,60,0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  gap: 20px;
+}
+
+.toolbar button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.toolbar button:hover {
+  background: rgba(108,92,231,0.8);
+  box-shadow: 0 5px 15px rgba(108,92,231,0.6);
+}
+
+.toolbar .stats span {
+  margin-left: 10px;
+  font-size: 0.9rem;
+}
+
+main {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+#editor {
+  width: 50%;
+  padding: 25px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  color: #fff;
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.5),
+              -10px -10px 30px rgba(255,255,255,0.05);
+  resize: horizontal;
+  min-width: 300px;
+}
+
+#preview {
+  width: 50%;
+  padding: 25px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  box-shadow: inset 5px 5px 20px rgba(0,0,0,0.5),
+              inset -5px -5px 20px rgba(255,255,255,0.05);
+  overflow-y: auto;
+  position: relative;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+.toc {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  width: 180px;
+  padding: 15px;
+  background: rgba(40,40,60,0.8);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  font-size: 0.9rem;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+/* Code block styling */
+pre {
+  counter-reset: line;
+  position: relative;
+  margin: 15px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,255,255,0.05);
+  transition: transform 0.2s ease;
+}
+
+pre:hover {
+  transform: scale(1.02);
+}
+
+pre code {
+  display: block;
+  padding: 20px 20px 20px 60px;
+  background: linear-gradient(145deg, #1e1e2f, #2c2c44);
+  color: #f8f8f2;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.95rem;
+  line-height: 1.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+pre code span {
+  display: block;
+  counter-increment: line;
+}
+
+pre code span::before {
+  content: counter(line);
+  position: absolute;
+  left: 15px;
+  width: 40px;
+  text-align: right;
+  color: rgba(255,255,255,0.3);
+  font-weight: 500;
+}
+
+.hljs-keyword { color: #ff79c6; font-weight: bold; }
+.hljs-string { color: #f1fa8c; }
+.hljs-number { color: #bd93f9; }
+.hljs-comment { color: rgba(255,255,255,0.4); font-style: italic; }
+.hljs-function .hljs-title { color: #50fa7b; }
+.hljs-title { color: #8be9fd; }
+.hljs-attr { color: #ffb86c; }
+.hljs-built_in { color: #ff5555; }
+
+@keyframes fadeIn { 0% {opacity: 0;} 100% {opacity: 1;} }
+
+textarea::-webkit-scrollbar, #preview::-webkit-scrollbar, .toc::-webkit-scrollbar {
+  width: 10px;
+}
+textarea::-webkit-scrollbar-thumb, #preview::-webkit-scrollbar-thumb, .toc::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 6px;
+}
